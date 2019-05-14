@@ -3,15 +3,14 @@
 // adding page
 // finding page with deleting functionality
 //    also updating functionality
-// Pretty it up with bootstrap
 //
-//Search by last name. Search by date.
-//Web or Store order.
-//Date order placed.
+//
+
 
 
 const express = require("express");
 var mysql = require("mysql");
+require('dotenv').config();
 
 const app = express();
 
@@ -24,10 +23,10 @@ app.use(express.static(__dirname + '/css'));
 app.set('view engine', 'ejs');
 //----------- Ryan - section to connect to DB
 var con = mysql.createConnection({
-  host: "localhost", // ip address of server running mysql
-  user: "user1", // user name to your mysql database
-  password: "password", // corresponding password
-  database: "pecanhouse"
+  host: process.env.DB_HOST, // ip address of server running mysql
+  user: process.env.DB_USER, // user name to your mysql database
+  password: process.env.DB_PASS, // corresponding password
+  database: process.env.DB_DATABASE
 });
 
 con.connect(function(err) {
