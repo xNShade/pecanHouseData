@@ -1,5 +1,6 @@
 <%- include("header") -%>
 <h2>Personal Information</h2>
+<% if(loggedin == true){ %>
 <form class="form-horizontal" action="addData" method="post">
   <div class="container-fluid">
     <div class="row">
@@ -113,6 +114,9 @@
     </div>
   </div>
 </form>
+<% } else { %>
+  <h2>Login Not Successful</h2>
+<% } %>
 <%- include("footer") -%>
 
 <script type="text/javascript">

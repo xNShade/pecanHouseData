@@ -21,6 +21,7 @@
     <button class="btn" type="submit" name="searchbutton">Search</button>
   </div>
 </form>
+<% if(loggedin == true){ %>
 <div class="container-fluid">
 <div class="table-responsive">
 <table class="table table-bordered table-striped">
@@ -65,6 +66,9 @@
   <% } %>
 <% } %>
 </table>
+<% } else { %>
+  <h2>Not Successfully Logged in!</h2>
+<% } %>
 </div>
 </div>
 

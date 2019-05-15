@@ -6,8 +6,6 @@
 //
 //
 
-
-
 const express = require("express");
 var mysql = require("mysql");
 require('dotenv').config();
@@ -36,13 +34,29 @@ con.connect(function(err) {
   console.log('Connected to the MySQL server.');
 });
 //---------------------------
-
+var login = false;
 app.get("/", function(req,res){
-  res.render('index', {});
+  res.render('index', {loggedin:login});
+});
+
+app.post("/",function(req,res){
+  var qusername = req.body.username;
+  var qpassword = req.body.password;
+  con.query("SELECT * FROM users WHERE username = " + con.escape(qusername) + "AND user_password = " + con.escape(qpassword), function(err,results,field){
+    if(err) console.log(err);
+    if(results == ""){
+      console.log("Incorrect Login");
+      res.redirect('/');
+    } else{
+      console.log("Successful Login");
+      login = true;
+      res.redirect('/');
+    }
+  });
 });
 
 app.get("/adding",function(req,res){
-  res.render('adding', {});
+  res.render('adding', {loggedin: login});
 });
 
 app.post("/addData", function(req,res){
@@ -80,7 +94,7 @@ app.post("/addData", function(req,res){
 });
 
 app.get("/finding",function(req,res){
-  res.render('finding',{searchQuery: null});
+  res.render('finding',{searchQuery: null, loggedin: login});
 });
 
 app.post("/found",function(req,res){
@@ -90,14 +104,16 @@ app.post("/found",function(req,res){
     con.query("SELECT * FROM customers WHERE last_name = '" + namesearch + "'ORDER BY date_ordered DESC", function(err, results, fields) {
       if (err) console.log(err);
       res.render('finding', {
-        searchQuery: results
+        searchQuery: results,
+        loggedin: login
       });
     });
   }else if(datesearch != ""){
     con.query("SELECT * FROM customers WHERE date_ordered = '" + datesearch + "'ORDER BY date_ordered DESC", function(err, results, fields) {
       if (err) console.log(err);
       res.render('finding', {
-        searchQuery: results
+        searchQuery: results,
+        loggedin: login
       });
     });
   }
