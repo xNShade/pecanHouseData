@@ -1,0 +1,19 @@
+<%- include("header") -%>
+<div class="container-fluid">
+<form class="form-horizontal" action="login" method="post">
+  <div class="row">
+    <div class="col-sm-2">
+      <label class="control-label" for="uname">Username </label>
+      <input type="text" class="form-control" name="uname" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label class="control-label" for="upass">Password </label>
+      <input type="password" name="upass" class="form-control" required>
+    </div>
+  </div>
+  <input type="submit" id="Submit" class="btn" value="Login" />
+</form>
+</div>
+<%- include("footer") -%>

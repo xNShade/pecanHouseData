@@ -1,0 +1,71 @@
+<%- include("header") -%>
+<form class="form-horizontal" action="finding" method="post">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1>Search By:</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="control-label" for="searchlast">Last Name</label>
+        <input type="text" class="form-control" name="searchlast" value="">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="control-label" for="searchdate">Date</label>
+        <input type="text" class="form-control" name="searchdate" value="" placeholder="YYYY/MM/DD">
+      </div>
+    </div>
+    <button class="btn" type="submit" name="searchbutton">Search</button>
+  </div>
+</form>
+<div class="container-fluid">
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
+  <thead>
+    <th>Sender Name</th>
+    <!-- <th>First Name</th>
+    <th>Last Name</th> -->
+    <th>Phone</th>
+    <!-- <th>Address</th>
+    <th>City</th>
+    <th>State</th> -->
+    <th>Zip</th>
+    <th>Recipient Name</th>
+    <!-- <th>Shipped First Name</th>
+    <th>Shipped Last Name</th> -->
+    <th>Shipped Address</th>
+    <th>Shipped City</th>
+    <th>Shipped State</th>
+    <th>Shipped Zip</th>
+    <th>Shipped Date</th>
+    <th>Online/Phone</th>
+  </thead>
+<% if(searchQuery != null){ %>
+  <% for(let i = 0;i < searchQuery.length; i++){ %>
+    <tr>
+      <td><%= searchQuery[i].first_name + " " + searchQuery[i].last_name %></td>
+      <!-- <td><%= searchQuery[i].last_name %></td> -->
+      <td><%= searchQuery[i].phone %></td>
+      <!-- <td><%= searchQuery[i].billing_add %></td>
+      <td><%= searchQuery[i].billing_city %></td>
+      <td><%= searchQuery[i].billing_state %></td> -->
+      <td><%= searchQuery[i].billing_zip %></td>
+      <td><%= searchQuery[i].ship_to_first + " " + searchQuery[i].last_name %></td>
+      <!-- <td><%= searchQuery[i].ship_to_last %></td> -->
+      <td><%= searchQuery[i].ship_add %></td>
+      <td><%= searchQuery[i].ship_city %></td>
+      <td><%= searchQuery[i].ship_state %></td>
+      <td><%= searchQuery[i].ship_zip %></td>
+      <td><%= searchQuery[i].date_ordered %></td>
+      <td><%= searchQuery[i].order_from %></td>
+    </tr>
+  <% } %>
+<% } %>
+</table>
+</div>
+</div>
+
+<%- include("footer") -%>
