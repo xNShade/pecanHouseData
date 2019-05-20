@@ -20,7 +20,6 @@
     </div>
     <button class="btn" type="submit" name="searchbutton">Search</button>
   </div>
-</form>
 <div class="container-fluid">
 <div class="table-responsive">
 <table class="table table-bordered table-striped">
@@ -42,6 +41,7 @@
     <th>Shipped Zip</th>
     <th>Shipped Date</th>
     <th>Online/Phone</th>
+    <th>Update</th>
   </thead>
 <% if(searchQuery != null){ %>
   <% for(let i = 0;i < searchQuery.length; i++){ %>
@@ -53,7 +53,7 @@
       <td><%= searchQuery[i].billing_city %></td>
       <td><%= searchQuery[i].billing_state %></td> -->
       <td><%= searchQuery[i].billing_zip %></td>
-      <td><%= searchQuery[i].ship_to_first + " " + searchQuery[i].last_name %></td>
+      <td><%= searchQuery[i].ship_to_first + " " + searchQuery[i].ship_to_last %></td>
       <!-- <td><%= searchQuery[i].ship_to_last %></td> -->
       <td><%= searchQuery[i].ship_add %></td>
       <td><%= searchQuery[i].ship_city %></td>
@@ -61,11 +61,12 @@
       <td><%= searchQuery[i].ship_zip %></td>
       <td><%= searchQuery[i].date_ordered %></td>
       <td><%= searchQuery[i].order_from %></td>
+      <td><input type="checkbox" name="updatepress" value="<%=searchQuery[i]._id %>" onchange="this.form.submit()">Update</td>
     </tr>
   <% } %>
 <% } %>
 </table>
 </div>
 </div>
-
+</form>
 <%- include("footer") -%>

@@ -1,0 +1,49 @@
+<%- include("header") -%>
+<%# The Record you chose to update is... blah blah blah
+Please change the fields you want and then click change.
+table?
+button %>
+<form class="" action="update" method="post">
+<div class="container-fluid">
+  <h2>The Record You Chose To Update is...</h2>
+  <table class="table table-bordered">
+    <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Shipped First Name</th>
+      <th>Shipped Last Name</th>
+      <th>Shipped Address</th>
+      <th>Shipped City</th>
+      <th>Shipped State</th>
+      <th>Shipped Zip</th>
+      <th>Shipped Date</th>
+      <th>Online/Phone</th>
+    </thead>
+    <tr>
+      <td style="display:none"><input type="text" name="id" value="<%= recordChange[0]._id %>"></td>
+      <td><input type="text" name="firstname" value="<%= recordChange[0].first_name %>""></td>
+      <td><input type="text" name="lastname" value="<%= recordChange[0].last_name %>"></td>
+      <td><input type="text" name="phone" value="<%= recordChange[0].phone %>"></td>
+      <td><input type="text" name="address" value="<%= recordChange[0].billing_add %>"></td>
+      <td><input type="text" name="city" value="<%= recordChange[0].billing_city %>"></td>
+      <td><input type="text" name="state" value="<%= recordChange[0].billing_state %>"></td>
+      <td><input type="text" name="zip" value="<%= recordChange[0].billing_zip %>"></td>
+      <td><input type="text" name="shipfirstname" value="<%= recordChange[0].ship_to_first %>"></td>
+      <td><input type="text" name="shiplastname" value="<%= recordChange[0].ship_to_last %>"></td>
+      <td><input type="text" name="shipadd" value="<%= recordChange[0].ship_add %>"></td>
+      <td><input type="text" name="shipcity" value="<%= recordChange[0].ship_city %>"></td>
+      <td><input type="text" name="shipstate" value="<%= recordChange[0].ship_state %>"></td>
+      <td><input type="text" name="shipzip" value="<%= recordChange[0].ship_zip %>"></td>
+      <td><input type="text" name="order_date" value="<%= recordChange[0].date_ordered %>"></td>
+      <td><input type="text" name="typeoforder" value="<%= recordChange[0].order_from %>"></td>
+    </tr>
+  </table>
+  <button class="btn" type="submit" name="updatebutton">Update</button>
+</div>
+</form>
+<%- include("footer") -%>

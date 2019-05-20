@@ -48,6 +48,8 @@ var findingRouter=require('./src/routes/findingRoute')(con);
 app.use('/finding',findingRouter);
 var addingRouter = require('./src/routes/addingRoute')(con);
 app.use('/adding',addingRouter);
+var updateRouter = require('./src/routes/updateRoute')(con);
+app.use('/update',updateRouter);
 
 app.set('views','./src/views');
 app.set('view engine', 'ejs');
