@@ -14,7 +14,7 @@ var f_router=function(con){
         var namesearch = req.body.searchlast;
         var datesearch = req.body.searchdate;
         if(namesearch != ""){
-          con.query("SELECT * FROM customers WHERE last_name = '" + namesearch + "'ORDER BY date_ordered DESC", function(err, results, fields) {
+          con.query("SELECT * FROM customers WHERE last_name = '" + namesearch + "' OR ship_to_last = '" + namesearch + "'ORDER BY date_ordered DESC", function(err, results, fields) {
             if (err) console.log(err);
             res.render('finding', {
               searchQuery: results
